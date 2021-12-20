@@ -14,7 +14,7 @@ import net.proteanit.sql.DbUtils;
 import java.awt.event.MouseEvent;
 import java.io.Serializable;
 
-public class User_Sub_1 implements Serializable {
+public class User_Sub implements Serializable {
 	private Connection con = null;
 	private PreparedStatement pre = null;
 	private ResultSet res = null;

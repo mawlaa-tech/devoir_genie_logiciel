@@ -10,7 +10,7 @@ import net.proteanit.sql.DbUtils;
 
 
 public class User extends javax.swing.JFrame {
-private User_Sub_1 userProduct = new User_Sub_1();
+private User_Sub userProduct = new User_Sub();
 public User() {
         initComponents();
         userProduct.setCon(Connect.connect());

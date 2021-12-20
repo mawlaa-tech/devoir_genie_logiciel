@@ -11,26 +11,25 @@ import javax.swing.JOptionPane;
 import java.io.Serializable;
 
 public class Send_Sub_1 implements Serializable {
-	private Connection con = null;
-	private PreparedStatement pre = null;
+	private Send_Sub_1_2 send_Sub_1_2 = new Send_Sub_1_2();
 	private javax.swing.JTextField message_from;
 	private javax.swing.JTextArea message_text;
 	private javax.swing.JComboBox<String> message_to;
 
 	public Connection getCon() {
-		return con;
+		return send_Sub_1_2.getCon();
 	}
 
 	public void setCon(Connection con) {
-		this.con = con;
+		send_Sub_1_2.setCon(con);
 	}
 
 	public PreparedStatement getPre() {
-		return pre;
+		return send_Sub_1_2.getPre();
 	}
 
 	public void setPre(PreparedStatement pre) {
-		this.pre = pre;
+		send_Sub_1_2.setPre(pre);
 	}
 
 	public javax.swing.JTextField getMessage_from() {
@@ -67,8 +66,8 @@ public class Send_Sub_1 implements Serializable {
 			String sql = "insert into inbox (MESSAGE_FROM,MESSAGE_TO,MESSAGE_TEXT) values ('" + message_from.getText()
 					+ "' ,'" + message_to.getSelectedItem() + "' ,'" + message_text.getText() + "' )";
 			try {
-				pre = con.prepareStatement(sql);
-				pre.execute();
+				send_Sub_1_2.setPre(send_Sub_1_2.getCon().prepareStatement(sql));
+				send_Sub_1_2.getPre().execute();
 				JOptionPane.showMessageDialog(null, "Message has been sent Successfully", "Success Operation", 1);
 				message_history();
 				clear();
@@ -79,12 +78,20 @@ public class Send_Sub_1 implements Serializable {
 	}
 
 	public void message_history() {
+		send_Sub_1_2();
+		try {
+			send_Sub_1_2.getPre().execute();
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 1);
+		}
+	}
+
+	private void send_Sub_1_2() {
 		String sql = "insert into message_history (MESSAGE_FROM,MESSAGE_TO,MESSAGE_TEXT) values ('"
 				+ message_from.getText() + "' ,'" + message_to.getSelectedItem() + "' ,'" + message_text.getText()
 				+ "' )";
 		try {
-			pre = con.prepareStatement(sql);
-			pre.execute();
+			send_Sub_1_2.setPre(send_Sub_1_2.getCon().prepareStatement(sql));
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 1);
 		}
@@ -97,11 +104,6 @@ public class Send_Sub_1 implements Serializable {
 	}
 
 	public void sendProduct() {
-		String sql = "select NAME from users";
-		try {
-			setPre(getCon().prepareStatement(sql));
-		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
-		}
+		send_Sub_1_2.sendProduct(this);
 	}
 }

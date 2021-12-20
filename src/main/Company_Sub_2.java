@@ -57,7 +57,7 @@ public class Company_Sub_2 implements Serializable {
 		this.phone = phone;
 	}
 
-	public void saveActionPerformed(java.awt.event.ActionEvent evt, Company_Sub_1 companyProduct) {
+	public void saveActionPerformed(java.awt.event.ActionEvent evt, Company_Sub companyProduct) {
 		companyProduct(companyProduct);
 		if (name.getText().equals("") || address.getText().equals("") || phone.getText().equals("")) {
 			JOptionPane.showMessageDialog(null, "Complete Company Information", "Missing Information", 2);
@@ -82,14 +82,14 @@ public class Company_Sub_2 implements Serializable {
 		}
 	}
 
-	private void companyProduct(Company_Sub_1 companyProduct) {
+	private void companyProduct(Company_Sub companyProduct) {
 		if (name.getText().equals("") || address.getText().equals("") || phone.getText().equals("")) {
 		} else {
-			companyProduct_(companyProduct);
+			company_1(companyProduct);
 		}
 	}
 
-	private void companyProduct_(Company_Sub_1 companyProduct) {
+	private void company_1(Company_Sub companyProduct) {
 		try {
 			int suring = JOptionPane.showConfirmDialog(null,
 					"Are You Sure from this Information\n" + "Name : " + name.getText() + "\n" + "Address : "
@@ -103,7 +103,7 @@ public class Company_Sub_2 implements Serializable {
 		}
 	}
 
-	public void updateActionPerformed(java.awt.event.ActionEvent evt, Company_Sub_1 companyProduct) {
+	public void updateActionPerformed(java.awt.event.ActionEvent evt, Company_Sub companyProduct) {
 		companyProduct__(companyProduct);
 		if (name.getText().equals("") || address.getText().equals("") || phone.getText().equals("")) {
 			JOptionPane.showMessageDialog(null, "Complete Company Information", "Missing Information", 2);
@@ -122,14 +122,14 @@ public class Company_Sub_2 implements Serializable {
 		}
 	}
 
-	private void companyProduct__(Company_Sub_1 companyProduct) {
+	private void companyProduct__(Company_Sub companyProduct) {
 		if (name.getText().equals("") || address.getText().equals("") || phone.getText().equals("")) {
 		} else {
 			companyProduct.companylist();
 		}
 	}
 
-	public void deleteActionPerformed(java.awt.event.ActionEvent evt, Company_Sub_1 companyProduct) {
+	public void deleteActionPerformed(java.awt.event.ActionEvent evt, Company_Sub companyProduct) {
 		companyProduct_2(companyProduct);
 		if (name.getText().equals("")) {
 			JOptionPane.showMessageDialog(null, "Enter Company_Name You Want to Delete", "Missing Information", 2);
@@ -150,7 +150,7 @@ public class Company_Sub_2 implements Serializable {
 		}
 	}
 
-	private void companyProduct_2(Company_Sub_1 companyProduct) throws HeadlessException {
+	private void companyProduct_2(Company_Sub companyProduct) throws HeadlessException {
 		if (name.getText().equals("")) {
 		} else {
 			companyProduct.companyProduct__1();
@@ -161,5 +161,14 @@ public class Company_Sub_2 implements Serializable {
 		name.setText("");
 		address.setText("");
 		phone.setText("");
+	}
+
+	public void company() {
+		String sql = "select * from company";
+		try {
+			setPre(getCon().prepareStatement(sql));
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
+		}
 	}
 }

@@ -14,7 +14,7 @@ import net.proteanit.sql.DbUtils;
 
 
 public class Warning_List extends javax.swing.JFrame {
-private Warning_List_Sub_1 warning_ListProduct = new Warning_List_Sub_1();
+private Warning_List_Sub warning_ListProduct = new Warning_List_Sub();
 public Warning_List() {
         initComponents();
         warning_ListProduct.setCon(Connect.connect());

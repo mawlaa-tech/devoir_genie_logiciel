@@ -17,7 +17,7 @@ import net.proteanit.sql.DbUtils;
  * @author Hemaa
  */
 public class Company extends javax.swing.JFrame {
-private Company_Sub_1 companyProduct = new Company_Sub_1();
+private Company_Sub companyProduct = new Company_Sub();
 public Company() {
         initComponents();
         companyProduct.setCon(Connect.connect());

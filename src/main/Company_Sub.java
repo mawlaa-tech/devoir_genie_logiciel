@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 import java.io.Serializable;
 
-public class Company_Sub_1 implements Serializable {
+public class Company_Sub implements Serializable {
 	private Company_Sub_2 companyProductProduct = new Company_Sub_2();
 	private ResultSet res = null;
 	private javax.swing.JTable company_list;
@@ -70,19 +70,10 @@ public class Company_Sub_1 implements Serializable {
 	}
 
 	public void companylist() {
-		companyProductProduct();
+		companyProductProduct.company();
 		try {
 			res = companyProductProduct.getPre().executeQuery();
 			company_list.setModel(DbUtils.resultSetToTableModel(res));
-		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
-		}
-	}
-
-	private void companyProductProduct() {
-		String sql = "select * from company";
-		try {
-			companyProductProduct.setPre(companyProductProduct.getCon().prepareStatement(sql));
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "Error", 2);
 		}

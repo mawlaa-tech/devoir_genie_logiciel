@@ -9,7 +9,7 @@ import net.proteanit.sql.DbUtils;
 import javax.swing.JOptionPane;
 import java.io.Serializable;
 
-public class Warning_List_Sub_1 implements Serializable {
+public class Warning_List_Sub implements Serializable {
 	private Connection con = null;
 	private PreparedStatement pre = null;
 	private ResultSet res = null;
